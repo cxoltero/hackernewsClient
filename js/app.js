@@ -9,33 +9,71 @@ var Router = Backbone.Router.extend({
         'users' : 'users'
     },
 
-    home: function() {
-      $('#content').empty();
 
-      $.ajax({
-          url: 'https://secret-escarpment-1540.herokuapp.com/users',
-          type: 'GET'
-      }).done(function(response) {
-          console.table(response);
-      });
-    },
+//#################################################
+    // home: function(){
+    //   $("#content").empty();
 
-    about: function(){
-      $('#content').empty();
+    //   $.ajax({
+    //     url: 'https://hackernewsch.herokuapp.com/submissions',
+    //     type: 'GET'
+    //   }).done(function(response) {
+    //     console.table(response);
 
-      var template = Handlebars.compile($("#aboutTemplate").html());
+    //     var template = Handlebars.compile($("#homeTemplate").html());
+    //     $("#content").html(template({
+    //       submissionList: response
+
+    //     }));
+    //   }).fail(function(jqXHR, textStatus, errorThrown){
+    //     trace(jqXHR, textStatus, errorThrown);
+    //   });
+    // },
+home: function() {
+    $('#content').empty();
+
+    $.ajax({
+      url: 'https://hackernewsch.herokuapp.com/submissions',
+      type: 'GET'
+    }).done(function(response) {
+      console.table(response);
+
+      var template = Handlebars.compile($("#submissionsTemplate").html());
       $('#content').html(template({
-          name: 'Carlos'
+        submissionsList: response
       }));
+    });
+  },
+
+
+//####################################################
+
+    // about: function(){
+    //   $('#content').empty();
+
+    //   var template = Handlebars.compile($("#aboutTemplate").html());
+    //   $('#content').html(template({
+    //       name: 'Carlos'
+    //   }));
+    // },
+//######## we can do the same thing with or withour handlebar templates! ###########
+    about: function(){
+      var name = "Carlos"
+
+      $('#content').html('<h1> About </h1><p>Hello ' + name + ' </p>')
     },
+
+
 
     comments: function(){
       $('#content').empty();
 
-
     },
 
+    // submissions: function(){
+    //   $('#content').empty();
 
+    // },
 
     users: function() {
       $('#content').empty();
@@ -45,12 +83,6 @@ var Router = Backbone.Router.extend({
           user: 'Carlos'
       }));
 
-      // $.ajax({
-      //     url: 'https://secret-escarpment-1540.herokuapp.com/users',
-      //     type: 'GET'
-      // }).done(function(response) {
-      //     console.table(response);
-      // });
     },
 
 });
