@@ -36,32 +36,16 @@
     <div id="content"></div>
 </div>
 
-<!--// <script type="text/x-handlebars-template" id="homeTemplate">
-//     <h1>List of Submissions</h1>
-//       {{#each submission}}
-//         <div class="submission">
-//           <h2><a href={{url}} > {{title}}</a></h2>
-//           <ul>
-//             <li>Submitted by: {{user.name}}</li>
-//             <li>Created on: {{created_at}}</li>
-//             <li>Number of comments: {{comments.length}}</li>
-//           </ul>
-//         </div>
-//       {{/each}}
-//       </div>
-// </script>
-
--->
-
 
 <script type="text/x-handlebars-template" id="submissionsTemplate">
       {{#each submissionsList}}
         <div class="submission">
           <h2><a href={{url}} > {{title}}</a></h2>
+          <p>{{body}}</p>
           <ul>
-            <li>Submitted by: {{user.name}}</li>
-            <li>Created on: {{created_at}}</li>
-            <li>Number of comments: {{comments.length}}</li>
+            <li><small>Submitted by: {{user.name}}</small></li>
+            <li><small>Created on: {{created_at}}</small></li>
+            <li><small>Number of comments: {{comments.length}}</small></li>
           </ul>
         </div>
       {{/each}}
